@@ -150,6 +150,8 @@ if __name__ == '__main__':
       with open(args.cg_callsites, 'r') as f:
         for l in f.readlines():
           s = l.strip().split(",")
+          if len(s) < 2:
+            continue
           if find_nodes(s[0]):
             if s[1] in cg_distance:
               if s[0] in bb_distance:
