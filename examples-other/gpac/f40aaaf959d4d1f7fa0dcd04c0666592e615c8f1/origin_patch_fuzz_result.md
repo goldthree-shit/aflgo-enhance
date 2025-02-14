@@ -2845,3 +2845,877 @@ previously allocated by thread T0 here:
 SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
 ==700419==ABORTING
 ```
+
+## id:000067,71613389,sig:06,src:000020,op:flip1,pos:439 (71504.433333s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000067,71613389,sig:06,src:000020,op:flip1,pos:439
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type mvex in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 4156 (start 437) invalid (read 4467)
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 429) invalid (read 4164)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m[33m[iso file] Unexpected box 4F800001 in stsd!
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091823==ERROR: AddressSanitizer: attempting double-free on 0x604000000290 in thread T0:
+    #0 0x7fb7bda8840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7fb7bd5f8b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7fb7bd5f8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7fb7bd5f8c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7fb7bd601007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x55a14217990d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7fb7bd297082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x55a14216c81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000290 is located 0 bytes inside of 48-byte region [0x604000000290,0x6040000002c0)
+freed by thread T0 here:
+    #0 0x7fb7bda8840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7fb7bd5f8b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7fb7bda88808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7fb7bd5cc171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091823==ABORTING
+```
+## id:000068,71613391,sig:06,src:000020,op:flip1,pos:439 (71504.437334s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000068,71613391,sig:06,src:000020,op:flip1,pos:439
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type mvex in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 2108 (start 437) invalid (read 2178)
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 429) invalid (read 2116)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 56800003 in stsd!
+[0m[33m[iso file] Unexpected box 56800003 in stsd!
+[0m[33m[iso file] Unexpected box 56800003 in stsd!
+[0m[33m[iso file] Unexpected box 56800003 in stsd!
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091840==ERROR: AddressSanitizer: attempting double-free on 0x604000000290 in thread T0:
+    #0 0x7fbeba9b340f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7fbeba523b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7fbeba523bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7fbeba523c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7fbeba52c007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x5564e350c90d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7fbeba1c2082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x5564e34ff81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000290 is located 0 bytes inside of 48-byte region [0x604000000290,0x6040000002c0)
+freed by thread T0 here:
+    #0 0x7fbeba9b340f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7fbeba523b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7fbeba9b3808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7fbeba4f7171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091840==ABORTING
+```
+## id:000069,71613399,sig:06,src:000020,op:flip1,pos:439 (71504.445334s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000069,71613399,sig:06,src:000020,op:flip1,pos:439
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 316 (start 437) invalid (read 513)
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 429) invalid (read 324)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 43000001 in stsd!
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091858==ERROR: AddressSanitizer: attempting double-free on 0x604000000290 in thread T0:
+    #0 0x7f3f20ab240f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f3f20622b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f3f20622bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7f3f20622c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7f3f2062b007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x555846aae90d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7f3f202c1082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x555846aa181d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000290 is located 0 bytes inside of 48-byte region [0x604000000290,0x6040000002c0)
+freed by thread T0 here:
+    #0 0x7f3f20ab240f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f3f20622b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f3f20ab2808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f3f205f6171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091858==ABORTING
+```
+## id:000070,71622391,sig:11,src:000020,op:flip1,pos:824 (71513.437862s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000070,71622391,sig:11,src:000020,op:flip1,pos:824
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type mvex in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type mfra in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 4156 (start 822) invalid (read 4211)
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 814) invalid (read 4164)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091880==ERROR: AddressSanitizer: attempting double-free on 0x6040000003d0 in thread T0:
+    #0 0x7f08fe7c840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f08fe338b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f08fe338bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7f08fe338c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7f08fe341007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x560a673d290d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7f08fdfd7082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x560a673c581d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x6040000003d0 is located 0 bytes inside of 48-byte region [0x6040000003d0,0x604000000400)
+freed by thread T0 here:
+    #0 0x7f08fe7c840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f08fe338b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f08fe7c8808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f08fe30c171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091880==ABORTING
+```
+## id:000071,71622394,sig:06,src:000020,op:flip1,pos:824 (71513.441863s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000071,71622394,sig:06,src:000020,op:flip1,pos:824
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type mvex in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 2108 (start 822) invalid (read 2929)
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 814) invalid (read 2116)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m[33m[iso file] Unexpected box 39800001 in stsd!
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091901==ERROR: AddressSanitizer: attempting double-free on 0x6040000003d0 in thread T0:
+    #0 0x7f2ad253840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f2ad20a8b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f2ad20a8bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7f2ad20a8c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7f2ad20b1007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x5595ec2dc90d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7f2ad1d47082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x5595ec2cf81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x6040000003d0 is located 0 bytes inside of 48-byte region [0x6040000003d0,0x604000000400)
+freed by thread T0 here:
+    #0 0x7f2ad253840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f2ad20a8b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f2ad2538808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f2ad207c171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091901==ABORTING
+```
+## id:000072,71753543,sig:11,src:000020,op:flip2,pos:1486 (71644.58957s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000072,71753543,sig:11,src:000020,op:flip2,pos:1486
+```bash
+
+[32m[iso file] Unknown box type tfhd in parent moof
+[0m[32m[iso file] Unknown box type trun in parent moof
+[0m[32m[iso file] Unknown box type TFXD in parent moof
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4091921==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x7f9e83c3c30a bp 0x000000000000 sp 0x7ffdb540c3e0 T0)
+==4091921==The signal is caused by a READ memory access.
+==4091921==Hint: address points to the zero page.
+    #0 0x7f9e83c3c309 in gf_isom_get_fragmented_samples_info (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1a4309)
+    #1 0x561ba7f08d11 in DumpTrackInfo (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x29d11)
+    #2 0x561ba7f0c1b0 in DumpMovieInfo (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x2d1b0)
+    #3 0x561ba7efcf8d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1df8d)
+    #4 0x7f9e838ca082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #5 0x561ba7eef81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1a4309) in gf_isom_get_fragmented_samples_info
+==4091921==ABORTING
+```
+## id:000073,72553473,sig:06,src:000020,op:int16,pos:455,val:+512 (72444.52058s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000073,72553473,sig:06,src:000020,op:int16,pos:455,val:+512
+```bash
+
+[32m[iso file] Unknown box type VOID in parent stsd
+[0m[32m[iso file] Unknown box type 00000000 in parent stsd
+[0m[33m[iso file] Box "stsd" (start 437) has 32 extra bytes
+[0m=================================================================
+==4091936==ERROR: AddressSanitizer: attempting double-free on 0x604000000190 in thread T0:
+    #0 0x7f9ad7d8f40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f9ad78ffb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f9ad78ffbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f9ad79008e6 in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1948e6)
+    #4 0x7f9ad78d9de9 in stbl_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16dde9)
+    #5 0x7f9ad78fffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #6 0x7f9ad79005ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #7 0x7f9ad78d73ea in minf_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b3ea)
+    #8 0x7f9ad78fffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #9 0x7f9ad79005ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #10 0x7f9ad78d6793 in mdia_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16a793)
+    #11 0x7f9ad78fffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #12 0x7f9ad79005ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #13 0x7f9ad78dc840 in trak_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x170840)
+    #14 0x7f9ad78fffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #15 0x7f9ad79005ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #16 0x7f9ad78d7849 in moov_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b849)
+    #17 0x7f9ad78fffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #18 0x7f9ad790045a in gf_isom_parse_root_box (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19445a)
+    #19 0x7f9ad790719e in gf_isom_parse_movie_boxes.part.0 (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19b19e)
+    #20 0x7f9ad79081e9 in gf_isom_open_file (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c1e9)
+    #21 0x558c936584c0 in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1c4c0)
+    #22 0x7f9ad759e082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #23 0x558c9364c81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000190 is located 0 bytes inside of 48-byte region [0x604000000190,0x6040000001c0)
+freed by thread T0 here:
+    #0 0x7f9ad7d8f40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f9ad78ffb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f9ad7d8f808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f9ad78d3171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091936==ABORTING
+```
+## id:000074,72764530,sig:06,src:000020,op:ext_AO,pos:441 (72655.580165s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000074,72764530,sig:06,src:000020,op:ext_AO,pos:441
+```bash
+
+[33m[iso file] Box "stco" (start 437) has 40 extra bytes
+[0m[33m[iso file] Track with no sample description box !
+[0m* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:00000000" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+Media Data Location: (null)
+Unknown Text Stream
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: 00000000
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091956==ERROR: AddressSanitizer: attempting double-free on 0x602000000310 in thread T0:
+    #0 0x7f4081f4940f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f4081a9431a in stco_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16e31a)
+    #2 0x7f4081ab9b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #3 0x7f4081ab9bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f4081ab9bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f4081ab9bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f4081ab9bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f4081ab9bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7f4081ab9c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7f4081ac2007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x564e7239d90d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7f4081758082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x564e7239081d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x602000000310 is located 0 bytes inside of 4-byte region [0x602000000310,0x602000000314)
+freed by thread T0 here:
+    #0 0x7f4081f4940f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f4081a9431a in stco_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16e31a)
+
+previously allocated by thread T0 here:
+    #0 0x7f4081f49808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f4081a94390 in stco_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16e390)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091956==ABORTING
+```
+## id:000075,72775074,sig:06,src:000020,op:ext_AO,pos:533 (72666.122358s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000075,72775074,sig:06,src:000020,op:ext_AO,pos:533
+```bash
+
+* Movie Info *
+	Timescale 1000 - 3 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: yes - duration 00:01:20.000
+3 fragments - 0 SegmentIndexes
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: UNKNOWN DATE	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 3 Info - TrackID 3 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "French (fra)" - Type "subt:stpp" - 0 samples
+Fragmented track: 1 samples - Media Duration 00:01:20.000
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+=================================================================
+==4091975==ERROR: AddressSanitizer: attempting double-free on 0x6060000000e0 in thread T0:
+    #0 0x7f455786c40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f45573dcb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f45573dcbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f45573dcbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f45573dcbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f45573dcbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f45573dcbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f45573dcc66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #8 0x7f45573e5007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #9 0x5608eb8ee90d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #10 0x7f455707b082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #11 0x5608eb8e181d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x6060000000e0 is located 0 bytes inside of 56-byte region [0x6060000000e0,0x606000000118)
+freed by thread T0 here:
+    #0 0x7f455786c40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f45573dcb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f455786c808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f45573b7491 in stco_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16e491)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091975==ABORTING
+```
+## id:000076,72964966,sig:06,src:000020,op:havoc,rep:8 (72856.016563s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000076,72964966,sig:06,src:000020,op:havoc,rep:8
+```bash
+
+[32m[iso file] Unknown box type VOID in parent stsd
+[0m[32m[iso file] Unknown box type 73107070 in parent stsd
+[0m[33m[iso file] Box "UNKN" is larger than container box
+[0m[33m[iso file] Box "stsd" size 60 (start 822) invalid (read 64)
+[0m[32m[iso file] Unknown box type 00000010 in parent stbl
+[0m[33m[iso file] Box "stbl" (start 814) has 60 extra bytes
+[0m=================================================================
+==4091994==ERROR: AddressSanitizer: attempting double-free on 0x6040000002d0 in thread T0:
+    #0 0x7f0b7cecf40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f0b7ca3fb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f0b7ca3fbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f0b7ca3fbb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f0b7ca408e6 in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1948e6)
+    #5 0x7f0b7ca173ea in minf_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b3ea)
+    #6 0x7f0b7ca3ffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #7 0x7f0b7ca405ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #8 0x7f0b7ca16793 in mdia_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16a793)
+    #9 0x7f0b7ca3ffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #10 0x7f0b7ca405ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #11 0x7f0b7ca1c840 in trak_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x170840)
+    #12 0x7f0b7ca3ffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #13 0x7f0b7ca405ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #14 0x7f0b7ca17849 in moov_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b849)
+    #15 0x7f0b7ca3ffa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #16 0x7f0b7ca4045a in gf_isom_parse_root_box (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19445a)
+    #17 0x7f0b7ca4719e in gf_isom_parse_movie_boxes.part.0 (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19b19e)
+    #18 0x7f0b7ca481e9 in gf_isom_open_file (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c1e9)
+    #19 0x55a3ff1624c0 in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1c4c0)
+    #20 0x7f0b7c6de082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #21 0x55a3ff15681d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x6040000002d0 is located 0 bytes inside of 48-byte region [0x6040000002d0,0x604000000300)
+freed by thread T0 here:
+    #0 0x7f0b7cecf40f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f0b7ca3fb80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f0b7cecf808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f0b7ca13171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4091994==ABORTING
+```
+## id:000077,72987321,sig:06,src:000020,op:havoc,rep:8 (72878.365865s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000077,72987321,sig:06,src:000020,op:havoc,rep:8
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[31m[iso file] Read Box type 00000000 (0x00000000) at position 950 has size 0 but is not at root/file level, skipping
+[0m[33m[iso file] Box "stsd" (start 437) has 3635 extra bytes
+[0m[33m[iso file] Box "stsd" is larger than container box
+[0m[33m[iso file] Box "stbl" size 136 (start 429) invalid (read 4164)
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[ISO file] dataReferenceIndex set to 0 in sample entry, overriding to 1
+[0m[33m[iso file] Unexpected box 77800001 in stsd!
+[0m[32m[iso file] Unknown box type 63000024 in parent minf
+[0m[31m[iso file] Missing DataInformationBox
+[0m[33m[iso file] Box "minf" (start 758) has 164 extra bytes
+[0m[33m[iso file] Track with no sample table !
+[0m[33m[iso file] Track with no sample description box !
+[0m[31m[iso file] Read Box type 00000000 (0x00000000) at position 950 has size 0 but is not at root/file level, skipping
+[0m[33m[iso file] Box "moov" (start 64) has 501 extra bytes
+[0m[32m[iso file] Unknown top-level box type 00000068
+[0m[31m[iso file] Incomplete box 00000068 - start 1459 size 8390876146459210290
+[0m[31m[iso file] Incomplete file while reading for dump - aborting parsing
+[0m* Movie Info *
+	Timescale 1000 - 2 tracks
+	Computed Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+	Fragmented File: no
+	File suitable for progressive download (moov before mdat)
+	File Brand isml - version 1
+		Compatible brands: iso2 isml
+	Created: GMT Mon Feb  6 08:44:48 2040
+	Modified: UNKNOWN DATE
+File has no MPEG4 IOD/OD
+
+Track # 1 Info - TrackID 1 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "Arabic (ara)" - Type "subt:stpp" - 0 samples
+XML Subtitle Stream - namespace http://www.w3.org/ns/ttml
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: stpp
+	All samples are sync
+
+Track # 2 Info - TrackID 2 - TimeScale 1000
+Media Duration 00:00:00.000 - Indicated Duration 00:00:00.000
+Media Info: Language "English (eng)" - Type "subt:00000000" - 0 samples
+Media Data Location: (null)
+Unknown Text Stream
+ Size 0 x 0 - Translation X=0 Y=0 - Layer 0
+	RFC6381 Codec Parameters: 00000000
+	All samples are sync
+
+=================================================================
+==4092015==ERROR: AddressSanitizer: attempting double-free on 0x604000000290 in thread T0:
+    #0 0x7f733bb0840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f733b678b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #4 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #5 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #6 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #7 0x7f733b678bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #8 0x7f733b678c66 in gf_isom_box_array_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193c66)
+    #9 0x7f733b681007 in gf_isom_delete_movie (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c007)
+    #10 0x5637e682590d in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1d90d)
+    #11 0x7f733b317082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #12 0x5637e681881d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000290 is located 0 bytes inside of 48-byte region [0x604000000290,0x6040000002c0)
+freed by thread T0 here:
+    #0 0x7f733bb0840f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f733b678b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f733bb08808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f733b64c171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4092015==ABORTING
+```
+## id:000078,72997629,sig:06,src:000020,op:havoc,rep:8 (72888.673303s)
+./MP4Box -info ../../../obj-aflgo/out/crashes/id:000078,72997629,sig:06,src:000020,op:havoc,rep:8
+```bash
+
+[32m[iso file] Unknown box type stts in parent stsd
+[0m[32m[iso file] Unknown box type stsc in parent stsd
+[0m[32m[iso file] Unknown box type stsz in parent stsd
+[0m[32m[iso file] Unknown box type stco in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type trak in parent stsd
+[0m[32m[iso file] Unknown box type mvex in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type moof in parent stsd
+[0m[32m[iso file] Unknown box type mdat in parent stsd
+[0m[32m[iso file] Unknown box type 66686400 in parent stsd
+[0m[33m[iso file] Box "stsd" (start 437) has 578 extra bytes
+[0m=================================================================
+==4092031==ERROR: AddressSanitizer: attempting double-free on 0x604000000290 in thread T0:
+    #0 0x7f52847c640f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f5284336b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+    #2 0x7f5284336bb6 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193bb6)
+    #3 0x7f52843378e6 in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1948e6)
+    #4 0x7f5284310de9 in stbl_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16dde9)
+    #5 0x7f5284336fa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #6 0x7f52843375ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #7 0x7f528430e3ea in minf_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b3ea)
+    #8 0x7f5284336fa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #9 0x7f52843375ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #10 0x7f528430d793 in mdia_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16a793)
+    #11 0x7f5284336fa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #12 0x7f52843375ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #13 0x7f5284313840 in trak_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x170840)
+    #14 0x7f5284336fa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #15 0x7f52843375ea in gf_isom_box_array_read_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x1945ea)
+    #16 0x7f528430e849 in moov_Read (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x16b849)
+    #17 0x7f5284336fa8 in gf_isom_box_parse_ex (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193fa8)
+    #18 0x7f528433745a in gf_isom_parse_root_box (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19445a)
+    #19 0x7f528433e19e in gf_isom_parse_movie_boxes.part.0 (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19b19e)
+    #20 0x7f528433f1e9 in gf_isom_open_file (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x19c1e9)
+    #21 0x5574b59ba4c0 in mp4boxMain (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1c4c0)
+    #22 0x7f5283fd5082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #23 0x5574b59ae81d in _start (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/MP4Box+0x1081d)
+
+0x604000000290 is located 0 bytes inside of 48-byte region [0x604000000290,0x6040000002c0)
+freed by thread T0 here:
+    #0 0x7f52847c640f in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122
+    #1 0x7f5284336b80 in gf_isom_box_del (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x193b80)
+
+previously allocated by thread T0 here:
+    #0 0x7f52847c6808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f528430a171 in unkn_New (/home/aflgo/examples-hx/gpac_CVE-2019-12482/asan_build/bin/gcc/libgpac.so.7+0x167171)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:122 in __interceptor_free
+==4092031==ABORTING
+```

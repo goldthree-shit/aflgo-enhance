@@ -44,8 +44,10 @@ def get_all_testcase(directory):
 
 if __name__ == "__main__":
     """
-     python3 /home/aflgo-enhance/scripts/bash_run_testcase.py 
+    python3 /home/aflgo-enhance/scripts/bash_run_testcase.py 
         "./MP4Box -info @@" "../../../obj-aflgo/out/crashes" "origin_patch_fuzz_result.md" "2025-02-13 13:01:00"
+    python3 /home/aflgo-enhance/scripts/bash_run_testcase.py 
+        "./MP4Box -info @@" "../../../obj-aflgo/out/crashes" "origin_patch_fuzz_result.md" "2025-02-13 13:01:00" 67
     """
    # 设置命令行参数解析
     parser = argparse.ArgumentParser(description="Execute a command with specified test case path and output name.")
@@ -53,14 +55,18 @@ if __name__ == "__main__":
     parser.add_argument("test_case_path", type=str, help="The path to the test case")
     parser.add_argument("output_name", type=str, help="The name of the output file")
     parser.add_argument("specified_time", type=str, help="The specified time in 'YYYY-MM-DD HH:MM:SS' format")
+    parser.add_argument("start_id", default=0, type=int, help="start id")
     # 解析命令行参数
     args = parser.parse_args()
     command = args.command
     test_case_path = args.test_case_path
     output_name = args.output_name
     specified_time = args.specified_time
+    start_id = args.start_id
     test_cases = get_all_testcase(test_case_path)
-    for test_case in test_cases:
+    for id, test_case in enumerate(test_cases):
+        if id < start_id:
+            continue
         print(f"Executing command with test case: {test_case}")
         # 执行命令
         stdout, stderr, finanl_command = execute_command(command, test_case)
