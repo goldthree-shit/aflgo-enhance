@@ -9,8 +9,7 @@ export SUBJECT=$PWD; export TMP_DIR=$PWD/obj-aflgo/temp
 export CC=$AFLGO/instrument/aflgo-clang; export CXX=$AFLGO/instrument/aflgo-clang++
 export LDFLAGS="-lpthread -flto -Wl,-plugin-opt=save-temps"
 export ADDITIONAL="-targets=$TMP_DIR/BBtargets.txt -outdir=$TMP_DIR -flto -fuse-ld=gold -Wl,-plugin-opt=save-temps -save-temps"
-# 修改手动
-configure CFLAGS="" -> CFLAGS="${CFLAGS}"
+修改configure CFLAGS="" -> CFLAGS="${CFLAGS}"
 python3 $AFLGO/scripts/git_line_changes.py --repo_path $SUBJECT \
                  --output_file $TMP_DIR/BBtargets.txt \
                  --version f40aaaf959d4d1f7fa0dcd04c0666592e615c8f1
@@ -28,7 +27,12 @@ CFLAGS="-distance=$TMP_DIR/distance.cfg.txt" CXXFLAGS="-distance=$TMP_DIR/distan
 make -j4
 # 生成种子
 mkdir in
-cp $SUBJECT/tests/media/auxiliary_files/* in/
+# /tests/media 下的文件全都拷贝到一个文件夹中
+find "$SUBJECT/tests/media" -type f -exec cp {} "in" \;
+# 对于相同的文件类型随机保留两个
+find "in" -type f | sed -n 's/.*\.\([^.]*\)$/\1/p' | sort | uniq | while read ext; do
+  find "in" -type f -name "*.$ext" | shuf | tail -n +3 | xargs rm -f
+done
 # 添加动态库
 LIBR_PATHS=$(find $(pwd)/bin/gcc -maxdepth 1 -type d)
 export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
