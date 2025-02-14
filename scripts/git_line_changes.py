@@ -3,7 +3,7 @@ import re
 import os
 import argparse
 
-def get_git_diff_lines(repo_path, version='HEAD'):
+def get_git_diff_lines(repo_path, version='HEAD', pre_version=None, diff_file=None):
     """
     Get the line numbers of removed lines in the git diff for the entire repository.
 
@@ -14,20 +14,37 @@ def get_git_diff_lines(repo_path, version='HEAD'):
     Returns:
     dict: A dictionary where keys are file paths and values are lists of line numbers that were removed (non-empty lines).
     """
-    result = subprocess.run(
-        ['git', '-C', repo_path, 'diff', f'{version}~1', version],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True
-    )
-
-    if result.returncode != 0:
-        raise Exception(f"Git diff command failed: {result.stderr}")
-
+    diff_output = None
     removed_lines_dict = {}
-    current_file = None
-    current_old_line = None
-    diff_output = result.stdout.split('\n')
+    if diff_file is not None:
+        # 打开diff_file
+        with open(diff_file, "r") as f:
+            diff_output = f.read().split('\n')
+    else:
+        result = None
+        if pre_version is not None:
+            result = subprocess.run(
+                ['git', '-C', repo_path, 'diff', pre_version, version],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+        elif version is not None:
+            result = subprocess.run(
+                ['git', '-C', repo_path, 'diff', f'{version}~1', version],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+        else:
+            raise Exception("No version or diff file provided.")
+        if result.returncode != 0:
+            raise Exception(f"Git diff command failed: {result.stderr}")
+
+       
+        current_file = None
+        current_old_line = None
+        diff_output = result.stdout.split('\n')
 
     for line in diff_output:
         # Check if the line starts a new file diff
@@ -69,24 +86,39 @@ def get_git_diff_lines(repo_path, version='HEAD'):
 
 def write_lines_to_file(lines, output_file):
     with open(output_file, 'w') as f:
-        for line in lines:
-            f.write(line + '\n')
+        for i, line in enumerate(lines):
+            if i < len(lines) - 1:
+                f.write(line + '\n')
+            else:
+                f.write(line)
 
 def main():
+    """
+    usage:
+    python3 $AFLGO/scripts/git_line_changes.py --repo_path $SUBJECT \
+                 --output_file $TMP_DIR/BBtargets.txt \
+                 --version 5250afecbc770c8f26829e9566d5b226a3c5fa80
+
+    python3 git_line_changes.py --output_file BBtargets.txt --diff_file ccpatch.diff
+    """
     # 设置命令行参数
     parser = argparse.ArgumentParser(description="Get removed lines from git diff and write to a file.")
-    parser.add_argument('--repo_path', type=str, required=True, help='Path to the git repository.')
+    parser.add_argument('--repo_path', type=str, required=False, help='Path to the git repository.')
     parser.add_argument('--output_file', type=str, required=True, help='Path to the output file.')
-    parser.add_argument('--version', type=str, required=True, help='Git version (commit hash, branch, or tag).')
+    parser.add_argument('--version', type=str, required=False, help='Git version (commit hash, branch, or tag).')
+    parser.add_argument('--pre_version', type=str, required=False, help='Git version (commit hash, branch, or tag).')
+    parser.add_argument('--diff_file', type=str, required=False, help='Git version (commit hash, branch, or tag).')
     args = parser.parse_args()
 
     # 使用命令行参数
     repo_path = args.repo_path
     output_file = args.output_file
     version = args.version
+    pre_version = args.pre_version
+    diff_file = args.diff_file
 
     # 获取整个仓库的删除行
-    removed_lines_dict = get_git_diff_lines(repo_path, version)
+    removed_lines_dict = get_git_diff_lines(repo_path, version, pre_version, diff_file)
 
     # 将结果格式化为 "文件名:行号" 并写入文件
     all_entries = []
