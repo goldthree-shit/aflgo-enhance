@@ -39,8 +39,9 @@ export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
 # 在关键字段中插入随机数据（如 moov box）
 # -m zone: 无内存限制
 # -z exp: 深度探索模式 ； fast：快速模式
-# -c 45m: 45分钟超时
+# -c 45m: time from start when SA enters exploitation
+# -t 2000+: 2000ms超时, 单个测试用例 timeout for each run
 # -i in: 输入文件夹
 # -o out: 输出文件夹
 # @@: 输入文件
-$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out ./bin/gcc/MP4Box -info @@ 
+$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out -t 2000+ ./bin/gcc/MP4Box -info @@
