@@ -24,8 +24,10 @@ git clone https://github.com/gpac/gpac.git
 # docker 镜像
 meilabixiaoxin/aflgo-enhance:1.0
 # uages
-docker run -itd --network host --name container-name --privileged meilabixiaoxin/aflgo-enhance:1.0 /bin/bash
+docker run --cpus="16" -itd --network host --name container-name --privileged meilabixiaoxin/aflgo-enhance:1.0 /bin/bash
 export AFLGO=/home/aflgo-enhance
+cd aflgo-enhance
+git pull origin master
 bash examples-ohter
 ```
 

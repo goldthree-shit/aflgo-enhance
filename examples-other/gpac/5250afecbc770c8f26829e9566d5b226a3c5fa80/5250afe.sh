@@ -3,7 +3,7 @@
 set -x
 
 cd gpac; 
-git reset --hard f40aaaf959d4d1f7fa0dcd04c0666592e615c8f1^
+git reset --hard 5250afecbc770c8f26829e9566d5b226a3c5fa80^
 mkdir obj-aflgo; mkdir obj-aflgo/temp
 export SUBJECT=$PWD; export TMP_DIR=$PWD/obj-aflgo/temp
 export CC=$AFLGO/instrument/aflgo-clang; export CXX=$AFLGO/instrument/aflgo-clang++
@@ -12,7 +12,7 @@ export ADDITIONAL="-targets=$TMP_DIR/BBtargets.txt -outdir=$TMP_DIR -flto -fuse-
 修改configure CFLAGS="" -> CFLAGS="${CFLAGS}"
 python3 $AFLGO/scripts/git_line_changes.py --repo_path $SUBJECT \
                  --output_file $TMP_DIR/BBtargets.txt \
-                 --version f40aaaf959d4d1f7fa0dcd04c0666592e615c8f1
+                 --version 5250afecbc770c8f26829e9566d5b226a3c5fa80
 # 编译
 cd obj-aflgo; CFLAGS="$ADDITIONAL" CXXFLAGS="$ADDITIONAL" ../configure --disable-shared --prefix=`pwd`
 make clean; make -j4
