@@ -55,4 +55,4 @@ rm -rf in && mv minimized_seeds in
 # -o out: 输出文件夹
 # -d 跳过确定性突变阶段（增快速度）
 # @@: 输入文件
-$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out -d -t 2000+ ./bin/gcc/MP4Box -diso -out /dev/null @@
+$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out -t 2000+ ./bin/gcc/MP4Box -diso -out /dev/null @@
