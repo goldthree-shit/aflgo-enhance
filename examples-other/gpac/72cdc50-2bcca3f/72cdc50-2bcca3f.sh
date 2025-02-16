@@ -33,19 +33,7 @@ LIBR_PATHS=$(find $(pwd)/bin/gcc -maxdepth 1 -type d)
 export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
 # 生成种子
 mkdir in  
-# 1. 复制测试媒体文件
-find "$SUBJECT/tests/media" -type f -exec cp {} "in" \;
-# 2. 按内容去重 (使用 afl-cmin)
-# 注意要根据测试的选项灵活调整 -diso -out /dev/null 中的内容
-$AFLGO/afl-2.57b/afl-cmin -i in -o in_unique -- ./bin/gcc/MP4Box -diso -out /dev/null @@
-rm -rf in && mv in_unique in
-# 3. 最小化初始种子
-# 注意要根据测试的选项灵活调整 -diso -out /dev/null 中的内容
-mkdir -p minimized_seeds 
-for input_file in in/*; do filename=$(basename $input_file); 
-  $AFLGO/afl-2.57b/afl-tmin -i $input_file -o minimized_seeds/$filename -- ./bin/gcc/MP4Box -diso -out /dev/null @@; 
-done
-rm -rf in && mv minimized_seeds in
+cp -r $AFLGO/examples-other/gpac/seeds/* in
 # 在关键字段中插入随机数据（如 moov box）
 # -m zone: 无内存限制
 # -z exp: 深度探索模式 ； fast：快速模式
