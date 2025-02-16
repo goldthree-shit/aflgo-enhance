@@ -15,7 +15,7 @@ export ADDITIONAL="-targets=$TMP_DIR/BBtargets.txt -outdir=$TMP_DIR -flto -fuse-
 python3 $AFLGO/scripts/git_line_changes.py --repo_path $SUBJECT \
                  --output_file $TMP_DIR/BBtargets.txt \
                  --version 2bcca3f1d4605100bb27d3ed7be25b53cddbc75c
-                 --pre_version 72cdc5048dead86bb1df7d21e0b9975e49cf2d97
+                 --pre_version 72cdc5048dead86bb1df7d21e0b9975e49cf2d97^
 cd obj-aflgo; 
 ../configure --extra-cflags="$ADDITIONAL" --disable-shared --prefix=`pwd`
 make clean; make -j
