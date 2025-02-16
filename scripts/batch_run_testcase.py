@@ -1,13 +1,19 @@
 import subprocess
 import os
 import argparse
-from datetime import datetime
+from datetime import datetime, timedelta
+env = os.environ.copy()  # 复制当前环境变量
+env.update({
+    'CURRENT_TIME': '2025-02-16 14:13:37',
+    'CURRENT_USER': 'goldthree-shit',
+    'ASAN_OPTIONS': 'abort_on_error=1:detect_leaks=1'
+})
 
 def execute_command(command, test_case):
     command = command.replace("@@", test_case)
     try:
         # 执行命令并获取返回结果
-        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=1)
         # 返回标准输出和标准错误
         return result.stdout.decode('utf-8'), result.stderr.decode('utf-8'), command
     except subprocess.CalledProcessError as e:
@@ -45,23 +51,31 @@ def get_all_testcase(directory):
 if __name__ == "__main__":
     """
     python3 /home/aflgo-enhance/scripts/bash_run_testcase.py 
-        "./MP4Box -info @@" "../../../obj-aflgo/out/crashes" "origin_patch_fuzz_result.md" "2025-02-13 13:01:00"
-    python3 /home/aflgo-enhance/scripts/bash_run_testcase.py 
-        "./MP4Box -info @@" "../../../obj-aflgo/out/crashes" "origin_patch_fuzz_result.md" "2025-02-13 13:01:00" 67
+        "./MP4Box -info @@" "../../../obj-aflgo/out/crashes" "origin_patch_fuzz_result.md" "13:01:00" 67
     """
    # 设置命令行参数解析
     parser = argparse.ArgumentParser(description="Execute a command with specified test case path and output name.")
     parser.add_argument("command", type=str, help="The command to execute")
     parser.add_argument("test_case_path", type=str, help="The path to the test case")
     parser.add_argument("output_name", type=str, help="The name of the output file")
-    parser.add_argument("specified_time", type=str, help="The specified time in 'YYYY-MM-DD HH:MM:SS' format")
+    parser.add_argument("fuzz_time", type=str, help="how times fuzz running 'HH:MM:SS' format")
     parser.add_argument("start_id", default=0, type=int, help="start id")
     # 解析命令行参数
     args = parser.parse_args()
     command = args.command
     test_case_path = args.test_case_path
     output_name = args.output_name
-    specified_time = args.specified_time
+    fuzz_time = args.fuzz_time
+    hours, minutes, seconds = map(int, fuzz_time.split(':'))
+    # 获取当前时间
+    current_time = datetime.now()
+    # 计算模糊测试开始的时间
+    time_difference = timedelta(
+        hours=hours,
+        minutes=minutes,
+        seconds=seconds
+    )
+    fuzz_start_time = current_time - time_difference
     start_id = args.start_id
     test_cases = get_all_testcase(test_case_path)
     for id, test_case in enumerate(test_cases):
@@ -72,10 +86,8 @@ if __name__ == "__main__":
         stdout, stderr, finanl_command = execute_command(command, test_case)
         # 获取testcase的生成时间
         file_mod_time = get_file_modification_time(test_case)
-        # 将指定时间字符串转换为datetime对象
-        specified_time = datetime.strptime(args.specified_time, '%Y-%m-%d %H:%M:%S')
         # 计算时间差
-        time_difference = calculate_time_difference(file_mod_time, specified_time)
+        time_difference = calculate_time_difference(file_mod_time, fuzz_start_time)
         # 构建输出内容
         content = "## " + test_case.split('/')[-1] + " (" + str(time_difference) + "s)\n"
         content += finanl_command + "\n"

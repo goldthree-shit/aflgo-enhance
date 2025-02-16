@@ -3,6 +3,8 @@
 version: f40aaaf959d4d1f7fa0dcd04c0666592e615c8f1^
 ```
 
+平均每分钟运行300case
+
 # result
 ## id:000000,3813428,sig:11,src:000007,op:flip1,pos:568 (3704.473611s)
 ./MP4Box -info ../../../obj-aflgo/out/crashes/id:000000,3813428,sig:11,src:000007,op:flip1,pos:568
