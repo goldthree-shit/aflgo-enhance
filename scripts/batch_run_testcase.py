@@ -16,6 +16,11 @@ def execute_command(command, test_case):
         result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=1)
         # 返回标准输出和标准错误
         return result.stdout.decode('utf-8'), result.stderr.decode('utf-8'), command
+    except subprocess.TimeoutExpired as e:
+        # 捕获超时错误
+        stdout = e.stdout.decode('utf-8') if e.stdout else ""
+        stderr = e.stderr.decode('utf-8') if e.stderr else "Command timed out after 1 second"
+        return stdout, stderr, command
     except subprocess.CalledProcessError as e:
         # 捕获执行命令时的错误
         return e.stdout.decode('utf-8'), e.stderr.decode('utf-8'), command
