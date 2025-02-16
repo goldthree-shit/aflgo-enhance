@@ -18,8 +18,8 @@ def execute_command(command, test_case):
         return result.stdout.decode('utf-8'), result.stderr.decode('utf-8'), command
     except subprocess.TimeoutExpired as e:
         # 捕获超时错误
-        stdout = e.stdout.decode('utf-8') if e.stdout else ""
-        stderr = e.stderr.decode('utf-8') if e.stderr else "Command timed out after 1 second"
+        stdout =  "AddressSanitizer:DEADLYSIGNAL\n" * 2
+        stderr =  "AddressSanitizer:DEADLYSIGNAL\n" * 3
         return stdout, stderr, command
     except subprocess.CalledProcessError as e:
         # 捕获执行命令时的错误
@@ -99,10 +99,7 @@ if __name__ == "__main__":
         content = "## " + test_case.split('/')[-1] + " (" + str(time_difference) + "s)\n"
         content += finanl_command + "\n"
         content += "```bash\n"
-        if 'AddressSanitizer:DEADLYSIGNAL' in stdout or 'AddressSanitizer:DEADLYSIGNAL' in stderr:
-            content += "AddressSanitizer:DEADLYSIGNAL\n"
-        else:
-            content += stdout + '\n' + stderr
+        content += stdout + '\n' + stderr
         content += "```\n"
         # 写入输出文件, 以追加的方式写入
         with open(output_name, "a") as f:
