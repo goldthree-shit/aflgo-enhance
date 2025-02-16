@@ -25,6 +25,9 @@ python3 $AFLGO/distance/gen_distance_fast.py $SUBJECT/obj-aflgo/bin/gcc $TMP_DIR
 make clean; make distclean
 ../configure --extra-cflags="-distance=$TMP_DIR/distance.cfg.txt" --disable-shared --prefix=`pwd`
 make -j
+# 添加动态库
+LIBR_PATHS=$(find $(pwd)/bin/gcc -maxdepth 1 -type d)
+export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
 # 生成种子
 mkdir in
 # 1. 复制测试媒体文件
@@ -39,9 +42,7 @@ mkdir -p minimized_seeds
 for input_file in in/*; do filename=$(basename $input_file); 
   $AFLGO/afl-2.57b/afl-tmin -i $input_file -o minimized_seeds/$filename -- ./bin/gcc/MP4Box -diso -out /dev/null @@; 
 done
-# 添加动态库
-LIBR_PATHS=$(find $(pwd)/bin/gcc -maxdepth 1 -type d)
-export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
+rm -rf in && mv minimized_seeds in
 # 在关键字段中插入随机数据（如 moov box）
 # -m zone: 无内存限制
 # -z exp: 深度探索模式 ； fast：快速模式
