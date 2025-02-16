@@ -81,6 +81,8 @@ if __name__ == "__main__":
         seconds=seconds
     )
     fuzz_start_time = current_time - time_difference
+    print(f"Current time: {current_time}")
+    print(f"Fuzz start time: {fuzz_start_time}")
     start_id = args.start_id
     test_cases = get_all_testcase(test_case_path)
     for id, test_case in enumerate(test_cases):
@@ -97,7 +99,10 @@ if __name__ == "__main__":
         content = "## " + test_case.split('/')[-1] + " (" + str(time_difference) + "s)\n"
         content += finanl_command + "\n"
         content += "```bash\n"
-        content += stdout + '\n' + stderr
+        if 'AddressSanitizer:DEADLYSIGNAL' in stdout or 'AddressSanitizer:DEADLYSIGNAL' in stderr:
+            content += "AddressSanitizer:DEADLYSIGNAL\n"
+        else:
+            content += stdout + '\n' + stderr
         content += "```\n"
         # 写入输出文件, 以追加的方式写入
         with open(output_name, "a") as f:
