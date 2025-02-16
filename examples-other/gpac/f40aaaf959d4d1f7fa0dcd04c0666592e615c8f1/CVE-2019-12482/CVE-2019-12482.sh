@@ -30,14 +30,14 @@ mkdir in
 # 1. 复制测试媒体文件
 find "$SUBJECT/tests/media" -type f -exec cp {} "in" \;
 # 2. 按内容去重 (使用 afl-cmin)
-# 注意要根据测试的选项灵活调整 -diso -out /dev/null 中的内容
-$AFLGO/afl-2.57b/afl-cmin -i in -o in_unique -- ./bin/gcc/MP4Box -diso -out /dev/null @@
+# 注意要根据测试的选项灵活调整 -info 中的内容
+$AFLGO/afl-2.57b/afl-cmin -i in -o in_unique -- ./bin/gcc/MP4Box -info @@
 rm -rf in && mv in_unique in
 # 3. 最小化初始种子
-# 注意要根据测试的选项灵活调整 -diso -out /dev/null 中的内容
+# 注意要根据测试的选项灵活调整 -info 中的内容
 mkdir -p minimized_seeds 
 for input_file in in/*; do filename=$(basename $input_file); 
-  $AFLGO/afl-2.57b/afl-tmin -i $input_file -o minimized_seeds/$filename -- ./bin/gcc/MP4Box -diso -out /dev/null @@; 
+  $AFLGO/afl-2.57b/afl-tmin -i $input_file -o minimized_seeds/$filename -- ./bin/gcc/MP4Box -info @@; 
 done
 # 添加动态库
 LIBR_PATHS=$(find $(pwd)/bin/gcc -maxdepth 1 -type d)
@@ -51,4 +51,4 @@ export LD_LIBRARY_PATH=$(echo $LIBR_PATHS | tr ' ' ':')
 # -o out: 输出文件夹
 # -d 跳过确定性突变阶段（增快速度）
 # @@: 输入文件
-$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out -d -t 2000+ ./bin/gcc/MP4Box -diso -out /dev/null @@
+$AFLGO/afl-2.57b/afl-fuzz -m none -z exp -c 45m -i in -o out -d -t 2000+ ./bin/gcc/MP4Box -info @@
