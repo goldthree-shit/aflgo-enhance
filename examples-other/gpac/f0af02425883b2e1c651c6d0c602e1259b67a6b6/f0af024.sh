@@ -6,6 +6,7 @@ apt update && apt install libavdevice-dev libavformat-dev libavcodec-dev libavut
 cd /home/gpac; 
 git reset --hard f0af02425883b2e1c651c6d0c602e1259b67a6b6^
 mkdir obj-aflgo; mkdir obj-aflgo/temp
+export AFLGO=/home/aflgo-enhance
 export SUBJECT=$PWD; export TMP_DIR=$PWD/obj-aflgo/temp
 export CC=$AFLGO/instrument/aflgo-clang; export CXX=$AFLGO/instrument/aflgo-clang++
 export LDFLAGS="-lpthread -flto -Wl,-plugin-opt=save-temps"
