@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -x
-
+apt update && apt install libavdevice-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev -y
 sh -c 'echo core > /proc/sys/kernel/core_pattern'
 export AFLGO=/home/aflgo-enhance
 cd /home/gpac
