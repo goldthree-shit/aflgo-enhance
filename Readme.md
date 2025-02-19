@@ -25,7 +25,7 @@ git clone https://gitlab.com/libtiff/libtiff.git
 # docker 镜像
 meilabixiaoxin/aflgo-enhance:1.0
 # uages
-docker run --cpus="16" -itd --network host --name container-name --privileged meilabixiaoxin/aflgo-enhance:1.0 /bin/bash
+docker run --cpus="16" -itd --network host --name container-name --privileged meilabixiaoxin/aflgo-enhance:2.0 /bin/bash
 export AFLGO=/home/aflgo-enhance
 cd aflgo-enhance
 git pull origin master
