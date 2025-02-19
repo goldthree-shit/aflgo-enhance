@@ -2,7 +2,7 @@
 
 set -x
 
-cd gpac
+cd /home/gpac
 mkdir asan_build
 cd asan_build
 CFLAGS="-g -fsanitize=address" LDFLAGS="-fsanitize=address" ../configure --disable-shared && make -j
