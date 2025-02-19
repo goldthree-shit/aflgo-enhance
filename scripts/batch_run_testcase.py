@@ -72,7 +72,7 @@ if __name__ == "__main__":
     output_name = args.output_name
     fuzz_out_path = args.fuzz_out_path
     
-    with open(f'{fuzz_out_path}\\fuzzer_stats', 'r') as f:
+    with open(f'{fuzz_out_path}/fuzzer_stats', 'r') as f:
         fuzzer_stats = f.read()
     
     for line in fuzzer_stats.split('\n'):
