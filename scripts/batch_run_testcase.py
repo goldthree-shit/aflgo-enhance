@@ -1,7 +1,7 @@
 import subprocess
 import os
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 env = os.environ.copy()  # 复制当前环境变量
 env.update({
     'CURRENT_TIME': '2025-02-16 14:13:37',
@@ -63,25 +63,25 @@ if __name__ == "__main__":
     parser.add_argument("command", type=str, help="The command to execute")
     parser.add_argument("test_case_path", type=str, help="The path to the test case")
     parser.add_argument("output_name", type=str, help="The name of the output file")
-    parser.add_argument("fuzz_time", type=str, help="how times fuzz running 'HH:MM:SS' format")
+    parser.add_argument("fuzz_out_path", type=str, help="The path to the fuzzer out")
     parser.add_argument("start_id", default=0, type=int, help="start id")
     # 解析命令行参数
     args = parser.parse_args()
     command = args.command
     test_case_path = args.test_case_path
     output_name = args.output_name
-    fuzz_time = args.fuzz_time
-    hours, minutes, seconds = map(int, fuzz_time.split(':'))
-    # 获取当前时间
-    current_time = datetime.now()
-    # 计算模糊测试开始的时间
-    time_difference = timedelta(
-        hours=hours,
-        minutes=minutes,
-        seconds=seconds
-    )
-    fuzz_start_time = current_time - time_difference
-    print(f"Current time: {current_time}")
+    fuzz_out_path = args.fuzz_out_path
+    
+    with open(f'{fuzz_out_path}\\fuzzer_stats', 'r') as f:
+        fuzzer_stats = f.read()
+    
+    for line in fuzzer_stats.split('\n'):
+        if line.startswith('start_time'):
+            timestamp = int(line.split(':')[1].strip())
+            # Convert to UTC datetime
+            fuzz_start_time = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+            break
+
     print(f"Fuzz start time: {fuzz_start_time}")
     start_id = args.start_id
     test_cases = get_all_testcase(test_case_path)
