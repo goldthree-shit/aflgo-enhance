@@ -21,6 +21,7 @@ apt install zlib1g-dev libfreetype6-dev libjpeg62-dev libpng-dev libmad0-dev lib
 cd /home
 git clone https://github.com/goldthree-shit/aflgo-enhance.git
 git clone https://github.com/gpac/gpac.git
+git clone https://gitlab.com/libtiff/libtiff.git
 # docker 镜像
 meilabixiaoxin/aflgo-enhance:1.0
 # uages
