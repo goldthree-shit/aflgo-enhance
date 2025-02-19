@@ -27,10 +27,11 @@ def execute_command(command, test_case):
 
 def get_file_modification_time(file_path):
     try:
-        # 获取文件的修改时间
+        # 方法1：使用UTC时区
         mod_time_epoch = os.path.getmtime(file_path)
-        mod_time = datetime.fromtimestamp(mod_time_epoch)
+        mod_time = datetime.fromtimestamp(mod_time_epoch, tz=timezone.utc)
         return mod_time
+
     except Exception as e:
         print(f"Error: {e}")
         return None
